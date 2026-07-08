@@ -1,54 +1,54 @@
 # ExamMate
 
-ExamMate একটি Streamlit ভিত্তিক অ্যাপ যা MCQ অনুশীলন, শিক্ষার্থী ও শিক্ষক অ্যাকাউন্ট ব্যবস্থাপনা, এবং OTP-ভিত্তিক সাইন-আপ / সাইন-ইন সিস্টেমের জন্য তৈরি।
+ExamMate is a Streamlit-based application designed for MCQ practice, user account management, and secure OTP-based sign-up and sign-in.
 
 ## Features
 
-- **Streamlit UI**: সহজ ও দ্রুত ওয়েব ইন্টারফেস।
-- **Sign Up / Sign In**: ইমেইল ও পাসওয়ার্ড ভিত্তিতে ব্যবহারকারী অ্যাকাউন্ট তৈরি ও লগইন।
-- **OTP Verification**: সাইন-আপের সময় ইমেইল OTP যাচাইকরণ।
-- **Teacher / Student Role**: শিক্ষার্থী এবং শিক্ষকের জন্য আলাদা ড্যাশবোর্ড।
-- **Profile Page**: প্রোফাইল ছবি আপলোড ও ব্যক্তিগত তথ্য দেখার সুযোগ।
+- **Streamlit Interface**: Clean and responsive web UI.
+- **Sign Up / Sign In**: Create and log in with email and password.
+- **OTP Verification**: Email-based OTP verification during registration.
+- **Teacher / Student Roles**: Separate dashboards for teachers and students.
+- **Profile Page**: Upload profile photos and view personal information.
 
-## ফাইল স্ট্রাকচার
+## File Structure
 
-- `ExamMate.py` - প্রধান পৃষ্ঠা এবং স্বাগতম ড্যাশবোর্ড।
-- `pages/01_signup.py` - নতুন ব্যবহারকারীর রেজিস্ট্রেশন ও OTP পাঠানোর লজিক।
-- `pages/02_signin.py` - ব্যবহারকারী লগইন ফর্ম এবং রিডাইরেকশন।
-- `pages/03_student_dashboard.py` - শিক্ষার্থীর ড্যাশবোর্ড।
-- `pages/04_teacher_dashboard.py` - শিক্ষকের ড্যাশবোর্ড।
-- `pages/05_student_profile.py` - শিক্ষার্থীর প্রোফাইল পৃষ্ঠা।
-- `pages/06_teacher_profile.py` - শিক্ষকের প্রোফাইল পৃষ্ঠা।
-- `users.json` - ব্যবহারকারীর রেকর্ড সংরক্ষণ করার JSON ডাটাবেস।
-- `images/` - অ্যাপের লোগো ও ডিফল্ট প্রোফাইল ছবি রাখার ফোল্ডার।
+- `ExamMate.py` - Main landing page and welcome dashboard.
+- `pages/01_signup.py` - New user registration and OTP sending logic.
+- `pages/02_signin.py` - User login form and navigation flow.
+- `pages/03_student_dashboard.py` - Student dashboard page.
+- `pages/04_teacher_dashboard.py` - Teacher dashboard page.
+- `pages/05_student_profile.py` - Student profile page.
+- `pages/06_teacher_profile.py` - Teacher profile page.
+- `users.json` - JSON file used as a simple user database.
+- `images/` - Folder containing app logos and default profile images.
 
-## ডিপেন্ডেন্সি
+## Dependencies
 
-প্রকল্পটি চালাতে Python ও Streamlit প্রয়োজন:
+This project requires Python and Streamlit:
 
 ```bash
 pip install streamlit
 ```
 
-## রান করার নির্দেশনা
+## Run Instructions
 
 ```bash
 cd ExamMate
 streamlit run ExamMate.py
 ```
 
-## ব্যবহার
+## Usage
 
-1. প্রথমে অ্যাপ চালু করুন।
-2. সরাসরি `Sign Up` করে নতুন অ্যাকাউন্ট তৈরি করুন।
-3. সাইন-আপের জন্য OTP পেতে আপনার ইমেইল দিন।
-4. লগইন করে আপনার প্রোফাইল বা ড্যাশবোর্ড দেখুন।
+1. Start the application.
+2. Select `Sign Up` to create a new account.
+3. Enter your email to receive an OTP during registration.
+4. Log in to access your dashboard or profile.
 
-## নোট
+## Notes
 
-- `pages/01_signup.py` ফাইলে `sender_email` ও `sender_password` সেট করা আছে, যা অ্যাপ পাসওয়ার্ড সহ Gmail থেকে OTP পাঠাতে ব্যবহৃত হবে।
-- লোকাল টেস্টের জন্য `images/` ফোল্ডারে উপযুক্ত ছবি ও `users.json` ফাইলের উপস্থিতি প্রয়োজন।
+- `pages/01_signup.py` includes `sender_email` and `sender_password` settings for sending OTP emails via Gmail.
+- For local testing, ensure the `images/` folder and `users.json` file are present.
 
-## লাইসেন্স
+## License
 
-এই প্রকল্পটি ব্যক্তিগত শিক্ষার উদ্দেশ্যে তৈরি।
+This project is intended for personal learning and demonstration purposes.
