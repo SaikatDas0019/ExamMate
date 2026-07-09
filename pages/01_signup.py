@@ -112,6 +112,10 @@ else:
             # .session_state reset kora.
             st.session_state.otp = None
             st.session_state.temp_user = {}
+            if st.session_state.user_catagory == "Student":
+                st.switch_page("pages/03_student_dashboard.py")
+            else:
+                st.switch_page("pages/04_teacher_dashboard.py")
         else:
             st.error("Incorrect OTP! Please try again.")
 

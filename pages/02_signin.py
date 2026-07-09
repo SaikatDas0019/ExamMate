@@ -18,6 +18,16 @@ def load_users():
             return json.load(f)
     return {}
 
+# JSON file theke specific user er data delete korar funtion.
+def delete_user(email):
+    users = load_users()
+    if email in users:
+        del users[email]
+        with open(user_data_file, "w") as f:
+            json.dump(users, f, indent=4)
+        return True
+    return False
+
 # User Interface (UI)
 if not st.session_state.logged_in:
     st.title("Gmail Login System")
@@ -26,7 +36,6 @@ if not st.session_state.logged_in:
     # email and password input field
     email = st.text_input("Enter your Email Address:")
     password = st.text_input("Enter your Password:", type="password")
-    forget_password = st.button("forget password", type="tertiary")
 
     # login button click korle
     if st.button("Login", type="primary"):
@@ -46,3 +55,21 @@ if not st.session_state.logged_in:
 
         else:
             st.error("Invalid email or password. Please try again.")
+
+    if st.button("forget password", type="tertiary", key="forget_password"):
+        if email:
+            deleted = delete_user(email)
+            if deleted:
+                st.success("Email-er data delete hoye geche. Ekhon abar signup korte parben.")
+            else:
+                st.warning("Ei email-er kono user data paoa jay ni.")
+
+            st.switch_page("pages/01_signup.py")
+
+        else:
+            st.warning("Prothome apnar email likhun.")
+        st.session_state.logged_in = False
+        st.session_state.user_email = ""
+        st.session_state.user_name = ""
+        st.session_state.user_catagory = ""
+        st.stop()
