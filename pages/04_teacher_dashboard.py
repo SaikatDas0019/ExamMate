@@ -25,8 +25,6 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     with col3:
         search_exam = st.text_input("", placeholder="Search Exam")
     with col4:
-        st.write("")
-        st.write("")
         search_button = st.button("🔍")
 
 

@@ -32,8 +32,6 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     with col_1:
         st.session_state.exam_code = st.text_input(f"**Teacher's Exam Code:**", placeholder="e.g: PHY-101")
     with col_2:
-        st.write("")
-        st.write("")
         if st.button("🔍"):
             st.switch_page("pages/08_student_exam.py")
 
