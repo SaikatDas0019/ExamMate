@@ -1,13 +1,15 @@
+import sqlite3
+
 import streamlit as st
 import base64
 import os
+import streamlit as st
 
 # first e chack kore neoya je user asole login kore aseche kina.
 if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or st.session_state.get("students"):
     if st.session_state.user_catagory != "Student":
         st.error("**Access Denaid!** This page in only for Students.")
         st.stop()
-    import streamlit as st
 
     # Page Title
     st.title("Profile")
@@ -78,17 +80,43 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
 
     st.write("---")
     st.subheader("Exam History")
-
-    col3, col4, col5 = st.columns([1, 1, 1])
-    with col3:
-        exam_1 = st.button("Math|Matrix", use_container_width=True)
-        exam_2 = st.button("Physice|Electric Filds", use_container_width=True)
-    with col4:
-        exam_3 = st.button("JEE-Main|Math", use_container_width=True)
-        exam_4 = st.button("WBJEE|Matrix", use_container_width=True)
-    with col5:
-        exam_5 = st.button("English|Ulesis", use_container_width=True)
-        exam_6 = st.button("NEET|Biology", use_container_width=True)
-
+    
+    conn = sqlite3.connect('ExamMate.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS results (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_email TEXT NOT NULL,
+            exam_code TEXT NOT NULL,
+            exam_name TEXT NOT NULL,
+            score INTEGER NOT NULL,
+            total_questions INTEGER NOT NULL,
+            date_taken TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    conn.commit()
+    
+    student_email = st.session_state.get('user_email', 'student@email.com')
+    
+    # Oi student er result gula ber kora
+    cursor.execute("SELECT exam_name, score, total_questions, date_taken FROM results WHERE student_email = ? ORDER BY date_taken DESC", (student_email,))
+    results_data = cursor.fetchall()
+    
+    if results_data:
+        import pandas as pd
+        
+        # DataFrame toyri kora, column name gula Bangla te deya
+        df = pd.DataFrame(results_data, columns=["Exam Name", "Score", "Total Questions", "Date Taken"])
+        
+        # Number ke persentage e dekhano
+        df["Performance (%)"] = round((df["Score"] / df["Total Questions"]) * 100, 2)
+        
+        # streamlit e dataframe dekhano, index hide kora, container width use kora
+        st.dataframe(df, use_container_width=True, hide_index=True)
+    else:
+        st.info("No exam history found. Please take some exams to see your results here.")
+    
+    conn.close()
 else:
     st.warning("Please, sign-in first.")

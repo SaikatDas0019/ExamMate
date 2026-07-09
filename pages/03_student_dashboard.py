@@ -30,11 +30,12 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
 
     col_1, col_2 = st.columns([4, 1])
     with col_1:
-        customize = st.text_input(f"**Teacher's Exam Code:**", placeholder="e.g: PHY-101")
+        st.session_state.exam_code = st.text_input(f"**Teacher's Exam Code:**", placeholder="e.g: PHY-101")
     with col_2:
         st.write("")
         st.write("")
-        search_exam = st.button("🔍")
+        if st.button("🔍"):
+            st.switch_page("pages/08_student_exam.py")
 
     col3, col4, col5 = st.columns(3)
 

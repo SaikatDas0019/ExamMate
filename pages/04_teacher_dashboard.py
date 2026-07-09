@@ -30,7 +30,8 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
         search_button = st.button("🔍")
 
 
-    coustomize_exam = st.button("+ Coustomize Exam", use_container_width=True, type="primary")
+    if st.button("+ Coustomize Exam", use_container_width=True, type="primary"):
+        st.switch_page("pages/07_question_customize.py")
 
     col5, col6, col7 =st.columns([1, 1, 1])
     with col5:
