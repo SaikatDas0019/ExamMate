@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import base64
 import os
+import streamlit as st
 
 # first e chack kore neoya je user asole login kore aseche kina.
 if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or st.session_state.get("students"):
     if st.session_state.user_catagory != "Teacher":
         st.error("**Access Denaid!** This page in only for Teachers.")
         st.stop()
-    import streamlit as st
 
     # Page Title
     st.title("Profile")
