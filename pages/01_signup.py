@@ -59,24 +59,6 @@ def send_otp_email(receiver_email, otp_code):
     sender_email = st.secrets["SMTP_EMAIL"]
     sender_password = st.secrets["SMTP_PASSWORD"]
 
-    msg = MIMEText(f"Your ExamMate verification code is: {otp_code}")
-    msg["Subject"] = "ExamMate OTP Verification"
-    msg["From"] = f"ExamMate <{sender_email}>"
-    msg["To"] = receiver_email
-
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, sender_password)
-            server.sendmail(sender_email, receiver_email, msg.as_string())
-        return True
-
-    except Exception as e:
-        st.error(f"SMTP Error: {e}")
-        return False
-    if not sender_email or not sender_password:
-        st.info(f"SMTP credentials are not configured. For testing, use OTP: {otp_code}")
-        return True
-
     msg = MIMEText(f"""
     <html>
     <body>
@@ -94,6 +76,18 @@ def send_otp_email(receiver_email, otp_code):
     msg["Reply-To"] = sender_email
     msg["Message-ID"] = make_msgid()
 
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.sendmail(sender_email, receiver_email, msg.as_string())
+        return True
+
+    except Exception as e:
+        st.error(f"SMTP Error: {e}")
+        return False
+    if not sender_email or not sender_password:
+        st.info(f"SMTP credentials are not configured. For testing, use OTP: {otp_code}")
+        return True
 
 # User Interface (UI) Configurations & CSS
 st.set_page_config(page_title="ExamMate | Sign Up", page_icon="📝", layout="centered")
