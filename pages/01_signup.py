@@ -5,6 +5,7 @@ import sqlite3
 import smtplib
 import streamlit as st
 from email.mime.text import MIMEText
+from email.utils import make_msgid
 
 # Data save korer jonno JSON file er name.
 user_data_file = "users.json"
@@ -62,10 +63,22 @@ def send_otp_email(receiver_email, otp_code):
         st.info(f"SMTP credentials are not configured. For testing, use OTP: {otp_code}")
         return True
 
-    msg = MIMEText(f"Your ExamMate verification code is: {otp_code}")
-    msg["Subject"] = "ExamMate OTP Verification"
+    msg = MIMEText(f"""
+    <html>
+    <body>
+    <h2>Your ExamMate Verification Code</h2>
+    <p>Your OTP is:</p>
+    <h1>{otp_code}</h1>
+    <p>This code is valid for 5 minutes.</p>
+    <p>Do not share this code with anyone.</p>
+    </body>
+    </html>
+    """, "html")
+    msg["From"] = f"ExamMate <{sender_email}>"
     msg["From"] = sender_email
     msg["To"] = receiver_email
+    msg["Reply-To"] = sender_email
+    msg["Message-ID"] = make_msgid()
 
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
@@ -94,7 +107,7 @@ st.markdown(
     }
     .main .block-container { max-width: 450px; padding: 2rem 1rem; margin: 0 auto; }
     
-    /* Input Fields */
+    /*Input Fields */
     .stTextInput>div>div>input, .stSelectbox>div>div>select { 
         background-color: #ffffff !important; 
         border: 1px solid #d1d5db !important; 
