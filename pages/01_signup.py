@@ -56,8 +56,8 @@ def save_user_to_sql(user_data):
     conn.close()
 
 def send_otp_email(receiver_email, otp_code):
-    sender_email = get_secret("SMTP_EMAIL", "dasbabu938207@gmail.com")
-    sender_password = get_secret("SMTP_PASSWORD", "vgyi zfoh prka lpkd")
+    sender_email = st.secrets["SMTP_EMAIL"]
+    sender_password = st.secrets["SMTP_PASSWORD"]
 
     if not sender_email or not sender_password:
         st.info(f"SMTP credentials are not configured. For testing, use OTP: {otp_code}")
