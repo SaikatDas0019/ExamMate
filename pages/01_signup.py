@@ -71,7 +71,6 @@ def send_otp_email(receiver_email, otp_code):
     </html>
     """, "html")
     msg["From"] = f"ExamMate <{sender_email}>"
-    msg["From"] = sender_email
     msg["To"] = receiver_email
     msg["Reply-To"] = sender_email
     msg["Message-ID"] = make_msgid()
