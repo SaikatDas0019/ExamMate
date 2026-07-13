@@ -85,7 +85,7 @@ def send_otp_email(receiver_email, otp_code):
         server.starttls()
         server.login(smtp_username, smtp_password)
         server.sendmail(from_email, receiver_email, msg.as_string())
-    return True
+        return True
 
     except Exception as e:
         st.error(f"SMTP Error: {e}")
