@@ -56,8 +56,12 @@ def save_user_to_sql(user_data):
     conn.close()
 
 def send_otp_email(receiver_email, otp_code):
-    sender_email = st.secrets["SMTP_EMAIL"]
-    sender_password = st.secrets["SMTP_PASSWORD"]
+    smtp_server = st.secrets["SMTP_SERVER"]
+    smtp_port = int(st.secrets["SMTP_PORT"])
+    smtp_username = st.secrets["SMTP_USERNAME"]
+    smtp_password = st.secrets["SMTP_PASSWORD"]
+    from_email = st.secrets["FROM_EMAIL"]
+    from_name = st.secrets["FROM_NAME"]
 
     msg = MIMEText(f"""
     <html>
@@ -70,16 +74,18 @@ def send_otp_email(receiver_email, otp_code):
     </body>
     </html>
     """, "html")
-    msg["From"] = f"ExamMate <{sender_email}>"
+    msg["From"] = f"{from_name} <{from_email}>"
+    msg["Subject"] = "ExamMate OTP Verification"
     msg["To"] = receiver_email
     msg["Reply-To"] = sender_email
     msg["Message-ID"] = make_msgid()
 
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, sender_password)
-            server.sendmail(sender_email, receiver_email, msg.as_string())
-        return True
+    with smtplib.SMTP(smtp_server, smtp_port) as server:
+        server.starttls()
+        server.login(smtp_username, smtp_password)
+        server.sendmail(from_email, receiver_email, msg.as_string())
+    return True
 
     except Exception as e:
         st.error(f"SMTP Error: {e}")
