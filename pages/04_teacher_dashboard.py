@@ -12,6 +12,9 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in"):
         st.stop()
 else:
     st.warning("Please sign in first.")
+    
+    if st.button("⬅️ Sign In page"):
+        st.switch_page("pages/02_signin.py")
     st.stop()
 
 user_name = st.session_state.get("user_name", "Teacher")
@@ -108,12 +111,7 @@ st.markdown("""
     .main .block-container { max-width: 480px; padding: 1.5rem 1rem 6rem 1rem !important; margin: 0 auto; }
     header[data-testid="stHeader"], .stDeployButton, div[data-testid="stToolbar"] { display: none; }
     
-    /* Header & Metrics */
-    .profile-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-    .profile-info { display: flex; align-items: center; gap: 15px; }
-    .avatar { width: 55px; height: 55px; background: #e0f2fe; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 2px solid #38bdf8; }
-    .greeting h3 { margin: 0; font-size: 1.3rem; font-weight: 700; color: #111827; }
-    .greeting p { margin: 0; font-size: 0.85rem; color: #4b5563; }
+    /* Metrics */
     .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
     .metric-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 14px; padding: 15px; display: flex; flex-direction: column; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
     .metric-header { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #4b5563; font-weight: 600;}
@@ -124,7 +122,7 @@ st.markdown("""
     .btn-ai-wrapper + div button { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important; border: none !important; border-radius: 12px !important; padding: 15px !important; height: auto !important; box-shadow: 0 4px 6px rgba(139, 92, 246, 0.2); }
     .btn-create-wrapper + div button p, .btn-ai-wrapper + div button p { color: #ffffff !important; font-weight: 700 !important; margin: 0; font-size: 1rem;}
     
-    /* Exam Cards (Modified for Streamlit Column alignment) */
+    /* Exam Cards */
     .exam-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px 14px 0 0; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; min-height: 110px; border-bottom: none;}
     .exam-title { font-size: 0.9rem; color: #1e293b; font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
     .exam-code-box { background: #f1f5f9; padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #e2e8f0; }
@@ -141,14 +139,26 @@ st.markdown("""
     .btn-adv + div button { background: #8b5cf6 !important; border: none !important; border-radius: 12px !important; height: 50px !important;}
     div[class^="btn-"] + div button p { color: #ffffff !important; font-weight: 600 !important; margin: 0; font-size: 0.95rem;}
     
-    /* Bottom Nav */
-    .bottom-nav-overlay { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; border-top: 1px solid #e5e7eb; padding: 10px 0; z-index: 999; display: flex; justify-content: space-around; max-width: 480px; margin: 0 auto; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
-    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.75rem; color: #9ca3af; width: 60px; font-weight: 600; }
-    .nav-item.active { color: #22c55e; }
-    .nav-icon { font-size: 1.4rem; }
-    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] { position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; opacity: 0.01; max-width: 480px; margin: 0 auto; display: flex; height: 60px; }
-    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] > div[data-testid="column"] { flex: 1 1 0% !important; }
-    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] button { height: 60px !important; width: 100% !important; }
+    /* ---------------------------------------------------
+       FIX: Custom Styling for the native profile button 
+       --------------------------------------------------- */
+    .profile-avatar-btn + div button { 
+        border-radius: 50% !important; 
+        width: 60px !important; 
+        height: 60px !important; 
+        border: 2px solid #38bdf8 !important; 
+        background: #e0f2fe !important; 
+        font-size: 1.8rem !important; 
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Force Streamlit columns to act more like Flexbox for alignment */
+    div[data-testid="stHorizontalBlock"] {
+        align-items: center;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -178,18 +188,12 @@ def render_exam_card(exam_name, exam_code, col):
 # ------------------------------------------
 if st.session_state.current_view == "dashboard":
     
-    # Header
-    st.markdown(f"""
-    <div class="profile-header">
-        <div class="profile-info">
-            <div class="avatar">👤</div>
-            <div class="greeting">
-                <h3>Hi, {user_name}</h3>
-                <p>Welcome back! Let's manage your classes.</p>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # ------------------------------------------
+    # FIX 1: Header
+    # ------------------------------------------
+    
+
+    st.header(f"Hi!, {user_name}")
 
     # Top Metrics
     st.markdown(f"""
@@ -263,7 +267,7 @@ elif st.session_state.current_view == "view_all_exams":
 
 
 # ------------------------------------------
-# VIEW: ANALYSIS (REFACTORED USER CODE)
+# VIEW: ANALYSIS
 # ------------------------------------------
 elif st.session_state.current_view == "analysis":
     st.button("⬅️ Back to Dashboard", on_click=go_to_dashboard, key="back_from_analysis")
@@ -302,7 +306,7 @@ elif st.session_state.current_view == "analysis":
         m3.metric("Questions", f"{total_qs}")
         st.write("---")
         
-        # 2. Top & Bottom Performers (Cleaned DataFrames)
+        # 2. Top & Bottom Performers
         col_top, col_bottom = st.columns(2)
         with col_top:
             st.markdown("🏆 **Top 10 Students**")
@@ -318,10 +322,10 @@ elif st.session_state.current_view == "analysis":
             
         st.write("---")
         
-        # 3. Matplotlib Distribution Graph (Refactored to match Light Theme)
+        # 3. Matplotlib Distribution Graph
         st.markdown("📊 **Score Distribution**")
         fig, ax = plt.subplots(figsize=(8, 3.5))
-        fig.patch.set_facecolor('#ffffff') # Match background
+        fig.patch.set_facecolor('#ffffff')
         ax.set_facecolor('#f8fafc')
         
         ax.hist(df_results['score'], bins=range(0, int(total_qs)+2), color='#3b82f6', edgecolor='#ffffff', align='left', rwidth=0.8)
@@ -344,26 +348,16 @@ elif st.session_state.current_view == "analysis":
             full_list.columns = ["Student Name", "Score", "Performance (%)"]
             st.dataframe(full_list, use_container_width=True, hide_index=True)
 
+# ------------------------------------------
+# FIX : Profile & Notification
+# ------------------------------------------
+st.write("---")
+header_col1, header_col2 = st.columns(2)
 
-# ==========================================
-# 5. RENDER BOTTOM FIXED NAVIGATION (Always Visible)
-# ==========================================
-st.markdown("""
-<div class="bottom-nav-overlay">
-    <div class="nav-item active"><div class="nav-icon">🏠</div><span>Home</span></div>
-    <div class="nav-item"><div class="nav-icon">📄</div><span>Questions</span></div>
-    <div class="nav-item"><div class="nav-icon">📊</div><span>Results</span></div>
-    <div class="nav-item"><div class="nav-icon">👤</div><span>Profile</span></div>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown('<div class="nav-buttons-hider"></div>', unsafe_allow_html=True)
-c1, c2, c3, c4 = st.columns(4)
-with c1: 
-    if st.button("NavHome", key="t_home"): go_to_dashboard() 
-with c2: 
-    if st.button("NavQues", key="t_questions"): pass 
-with c3: 
-    if st.button("NavRes", key="t_results"): pass 
-with c4: 
-    if st.button("NavProf", key="t_profile"): st.switch_page("pages/05_student_profile.py")
+with header_col1:
+    if st.button("👤 Profile", help="Go to Teacher Profile", use_container_width=True):
+        st.switch_page("pages/06_teacher_profile.py")
+        
+with header_col2:
+    if st.button("🔔 Notification", use_container_width=True):
+        st.switch_page("pages/11_notification.py")

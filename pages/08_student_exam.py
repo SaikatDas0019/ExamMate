@@ -1,16 +1,15 @@
 import streamlit as st
 import sqlite3
 
-
-# first e chack kore neoya je user asole login kore aseche kina.
+# Verify authentication
 if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or st.session_state.get("students"):
-    if st.session_state.user_catagory != "Student":
-        st.error("**Access Denaid!** This page in only for Students.")
+    if st.session_state.get("user_catagory") != "Student":
+        st.error("**Access Denied!** This page is only for Students.")
         st.stop()
 
     st.title("Exam")
 
-    # .session_state Memori inisialise kora.
+    # .session_state Memory Initialize
     if "exam_started" not in st.session_state:
         st.session_state.exam_started = False
     if "current_q_index" not in st.session_state:
@@ -22,7 +21,7 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     if "exam_info" not in st.session_state:
         st.session_state.exam_info = None
 
-
+    # Auto-Start Logic
     if not st.session_state.exam_started:
         exam_code = st.session_state.get("exam_code", "").strip()
 
@@ -30,40 +29,41 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
             conn = sqlite3.connect("ExamMate.db")
             cursor = conn.cursor()
 
-            # exams table e check kora je oi code er kono exam ache ki na.
+            # Check if exam exists in DB
             cursor.execute("SELECT exam_name, timer_minutes FROM exams WHERE exam_code = ?", (exam_code,))
-            exam_date = cursor.fetchone()  # .fetchone() mane akta result tule ana.
+            exam_data = cursor.fetchone()  
 
-            if exam_date:
-                # Exam pauya gele tar name ar time variable e rakha 
-                exam_name = exam_date[0]
-                timer = exam_date[1]
+            if exam_data:
+                exam_name = exam_data[0]
+                timer = exam_data[1]
 
-                st.success(f"The test found: {exam_name}")
-                st.info(f"Time: {timer} min")
-
-                # eber 'questions' table theke all question tule ana.
+                # Fetch all questions for this exam
                 cursor.execute("SELECT id, question_text, option_a, option_b, option_c, option_d, correct_option FROM questions WHERE exam_code = ?", (exam_code,))
-                questions = cursor.fetchall()  # .fetchall() mane sob question aksonge tile ana.
-
-                st.write(f"Total questions: {len(questions)}")
+                questions = cursor.fetchall()  
 
                 if questions:
+                    # Exam and questions found -> AUTOMATICALLY START EXAM
                     st.session_state.questions = questions
                     st.session_state.exam_info = (exam_name, timer)
                     st.session_state.exam_started = True
                     st.session_state.current_q_index = 0
                     st.session_state.student_answers = {}
-                    st.rerun()
+                    st.rerun() # Silent rerun to jump straight into the exam interface
                 else:
-                    st.error("No questions were found in this test.")
-
+                    st.error(f"Test found ({exam_name}), but no questions were attached to it in the database.")
+                    if st.button("Return to Dashboard 🏠"):
+                        st.switch_page("pages/03_student_dashboard.py")
             else:
-                st.error("Wrong code! No tests of this code were found in the database.")
+                st.error(f"Invalid Code: No exam with the code '{exam_code}' was found in the database.")
+                if st.button("Return to Dashboard 🏠"):
+                    st.switch_page("pages/03_student_dashboard.py")
 
             conn.close()
         else:
-            st.warning("Please enter a code first.")
+            # Fallback if someone manually navigates to the URL without clicking an exam button
+            st.warning("No exam selected.")
+            if st.button("Return to Dashboard 🏠"):
+                st.switch_page("pages/03_student_dashboard.py")
 
     # Live exam interface
     else:
@@ -72,40 +72,40 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
         total_questions = len(questions)
         current_index = st.session_state.current_q_index
 
-        # Exam er name and time dekhano.
+        # Display Exam Name and Time
         st.subheader(f"Exam: {exam_name}")
         st.write(f"Time: {timer_minutes} min")
 
-        # Progress ber
+        # Progress bar
         progress_val = (current_index + 1) / total_questions
         st.progress(progress_val)
         st.write(f"**Question No.: {current_index + 1} / {total_questions}**")
 
         st.divider()
 
-        # bartaman question er data alada kora
+        # Separate current question data
         q_id, q_text, opt_a, opt_b, opt_c, opt_d, correct_opt = questions[current_index]
 
-        # Screen e question dekhano
-        st.markdown(f"###Q: {q_text}")
+        # Display Question
+        st.markdown(f"### Q: {q_text}")
 
-        # 4 ti option sajano
+        # Format 4 options
         option_list = [f"A. {opt_a}", f"B. {opt_b}", f"C. {opt_c}", f"D. {opt_d}"]
         option_map = {"A": 0, "B": 1, "C": 2, "D": 3}
         reverse_map = {0: "A", 1: "B", 2: "C", 3: "D"}
 
-        # Jodi student age ai question er answer diya thake , tobe seti selected thakbe (edit korer jonno)
+        # Maintain selected state
         previously_saved_ans = st.session_state.student_answers.get(current_index, None)
         default_selection = option_map[previously_saved_ans] if previously_saved_ans in option_map else 0
 
-        # radio button
+        # Radio button selection
         user_choice = st.radio("Choose the correct option:",
                                option_list,
                                index=default_selection,
                                key=f"q_radio_{current_index}"
                                )
 
-        # Student ja select korbe ta memorite save kora.
+        # Save student choice to memory
         selected_letter = reverse_map[option_list.index(user_choice)]
         st.session_state.student_answers[current_index] = selected_letter
 
@@ -115,25 +115,22 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            # 1st question e thakle 'Previous' batan ta disable thakbe
             if st.button("⬅️ Previous", disabled=(current_index == 0), use_container_width=True):
                 st.session_state.current_q_index -= 1
                 st.rerun()
 
         with col2:
-            # question er last e thakle 'Next' batan ta disable thakbe
             if st.button("Next ➡️", disabled=(current_index == total_questions - 1), use_container_width=True):
                 st.session_state.current_q_index += 1
                 st.rerun()
 
         with col3:
-            # final question e thakle 'Submit' batan ta dekhabe
             if st.button("Submit Exam 🚀", type="primary", use_container_width=True):
-                st.session_state.exam_started = "completed" # Exa er status complete kora
+                st.session_state.exam_started = "completed" 
                 st.rerun()
 
 
-    # Exam complete hole student ke score dekhano
+    # Post-Exam Score View
     if st.session_state.exam_started == "completed":
         st.balloons()
         st.title("Exam Completed!")
@@ -141,10 +138,10 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
         questions = st.session_state.questions
         total_questions = len(questions)
 
-        # Score calculate kora
+        # Calculate Score
         score = 0
         for idx, q in enumerate(questions):
-            real_correct_answer = q[6] # Database e correct answer (A/B/C/D)
+            real_correct_answer = q[6] # Correct answer index from DB
             student_given_answer = st.session_state.student_answers.get(idx, None)
 
             if student_given_answer == real_correct_answer:
@@ -153,7 +150,7 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
         st.metric(label="Your Score", value=f"{score} / {total_questions}")
         st.success("Your answers have been submitted successfully. The teacher will be able to view them.")
 
-        # ---Save Results database e save---
+        # --- Save Results to Database ---
         if "result_saved" not in st.session_state:
             conn = sqlite3.connect('ExamMate.db')
             cursor = conn.cursor()
@@ -170,7 +167,7 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
             ''')
             conn.commit()
 
-            student_email = st.session_state.get('user_email', 'student@email.com') # login user er email
+            student_email = st.session_state.get('user_email', 'student@email.com') 
             exam_code = st.session_state.get('exam_code', '')
 
             cursor.execute('''
@@ -180,15 +177,19 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
 
             conn.commit()
             conn.close()
-            st.session_state.result_saved = True # jate result save hoyeche seta mark kora
+            st.session_state.result_saved = True
 
 
-        # Exam ses kore dashboard e fire jawar jonno button
+        # Return to Dashboard Button
         if st.button("Return to Dashboard 🏠"):
             st.session_state.exam_started = False
             st.session_state.current_q_index = 0
             st.session_state.student_answers = {}
-            st.rerun()
+            # Optional: reset dash view to categories when returning
+            st.session_state.dash_flow_step = "categories"
+            st.switch_page("pages/03_student_dashboard.py")
 
 else:
     st.warning("Please, sign-in first.")
+    if st.button("⬅️ Sign In page"):
+        st.switch_page("pages/02_signin.py")

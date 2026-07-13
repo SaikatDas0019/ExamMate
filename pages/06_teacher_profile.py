@@ -174,3 +174,6 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     
 else:
     st.warning("Please, sign-in first.")
+
+    if st.button("⬅️ Sign In page"):
+        st.switch_page("pages/02_signin.py")

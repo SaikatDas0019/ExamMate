@@ -1,0 +1,248 @@
+
+{
+  "exam_name": "Class 12 Chemistry - Group 18 Elements (Noble Gases)",
+  "timer_minutes": 60,
+  "teacher_email": "dasbabu938207@gmail.com",
+  "questions" : [
+  {
+    "question_text": "Which of the following structure is most expected for the molecule XeOF4?",
+    "option_a": "Tetrahedral",
+    "option_b": "Square pyramid",
+    "option_c": "Square planar",
+    "option_d": "Octahedral",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Which is mismatched regarding the shape?",
+    "option_a": "XeF4 = Square planar",
+    "option_b": "XeOF4 = Square Pyramidal",
+    "option_c": "XeF6 = Distorted Octahedral",
+    "option_d": "XeO3 = Bent Shape",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "MF + XeF4 -> 'A' (M+ = Alkali metal cation). The state of hybridisation of the central atom in 'A' and shape of the species are:",
+    "option_a": "sp3d, TBP",
+    "option_b": "sp3d3, distorted octahedral",
+    "option_c": "sp3d2, pentagonal planar",
+    "option_d": "No compound formed at all",
+    "correct_option": "C"
+  },
+  {
+    "question_text": "Match the compounds given in column I with the hybridisation and shape given in column II and mark the correct option. Column I (A. XeF6, B. XeO3, C. XeOF4, D. XeF4) Column II (1. Distorted octahedral, 2. Square planar, 3. Pyramidal, 4. Square pyramidal)",
+    "option_a": "1 2 4 3",
+    "option_b": "4 3 1 2",
+    "option_c": "4 1 2 3",
+    "option_d": "1 3 4 2",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "XeF2 and XeF6 are separately hydrolysed then;",
+    "option_a": "both give out O2",
+    "option_b": "XeF6 gives O2 and XeF2 does not",
+    "option_c": "XeF2 alone gives O2",
+    "option_d": "Neither of them gives HF",
+    "correct_option": "C"
+  },
+  {
+    "question_text": "XeF6 dissolves in anhydrous HF to give a good conducting solution which contains:",
+    "option_a": "H+ and XeF7- ion",
+    "option_b": "HF2- and XeF5+ ions",
+    "option_c": "HXeF6+ and F-",
+    "option_d": "none of these",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Which of the following is not true about helium?",
+    "option_a": "It has the lowest boiling point",
+    "option_b": "It has the highest first ionization energy",
+    "option_c": "It can diffuse through rubber and plastic material",
+    "option_d": "It can form clathrate compounds",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "Which of the following is an uncommon hydrolysis product of XeF2 and XeF4?",
+    "option_a": "Xe",
+    "option_b": "XeO3",
+    "option_c": "HF",
+    "option_d": "O2",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "SbF5 reacts with XeF4 to form an adduct. The shapes of cation and anion in the adduct are respectively:",
+    "option_a": "square planar, trigonal bipyramidal",
+    "option_b": "T-shaped, Octahedral",
+    "option_c": "square pyramidal, octahedral",
+    "option_d": "square planar, octahedral",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Incorrect statement regarding following reactions is: XeF6 + Excess H2O -> 'X' + HF ; XeF6 + 2H2O -> 'Y' + HF",
+    "option_a": "'X' is explosive",
+    "option_b": "'Y' is an oxyacid of xenon",
+    "option_c": "Both are example of non-redox reaction",
+    "option_d": "XeF6 can undergo partial hydrolysis",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Which of the following noble gas does not form clathrate compound?",
+    "option_a": "Kr",
+    "option_b": "Ne",
+    "option_c": "Xe",
+    "option_d": "Ar",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Radon is a noble gas. Its radioactivity is used in the treatment of:",
+    "option_a": "typhoid",
+    "option_b": "cancer",
+    "option_c": "cough and cold",
+    "option_d": "thyroid",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Which of the following statements is false?",
+    "option_a": "H3PO2, H3PO3 and H3PO4 all are tribasic and reducing in nature.",
+    "option_b": "Amongst anions NO3-, SO3 2-, CO3 2- and BO3 3- only SO3 2- have p pi - d pi bonding.",
+    "option_c": "Amongst anions SO3 2-, SO4 2-, S2O4 2- and HSO4-, SO3 2- is basic and reducing in nature.",
+    "option_d": "Number of lone pair(s) of electrons on Xe atoms in XeF2, XeF4 and XeF6 are 3, 2 and 1 respectively.",
+    "correct_option": "A"
+  },
+  {
+    "question_text": "Which one of the following does not exist?",
+    "option_a": "XeOF4",
+    "option_b": "NeF2",
+    "option_c": "XeF2",
+    "option_d": "XeF6",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "The gas used in gas thermometer is:",
+    "option_a": "He",
+    "option_b": "O2",
+    "option_c": "Xe",
+    "option_d": "Ne",
+    "correct_option": "A"
+  },
+  {
+    "question_text": "Welding of magnesium can be done in an atmosphere of:",
+    "option_a": "O2",
+    "option_b": "Ar",
+    "option_c": "N2",
+    "option_d": "all of these",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Which one of the following statements regarding helium is incorrect?",
+    "option_a": "It is used to produce and sustain powerful superconducting magnets.",
+    "option_b": "It is used as a cryogenic agent for carrying out experiments at low temperatures.",
+    "option_c": "It is used in filling balloons for meterological observations because it is lighter and non-inflammable.",
+    "option_d": "It is used as dilute for oxygen in modern diving apparatus because of its high solubility in blood.",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "Which one is incorrect statement?",
+    "option_a": "He is used in gas cooled nuclear reactors",
+    "option_b": "He is used as a cryogenic agent for carrying out experiments at low temperature",
+    "option_c": "He is used to produce and sustain powerful super conducting magnets",
+    "option_d": "He is used to fill gas balloons instead of H2 because it is lighter and non-inflammable",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "Liquid flow from a higher to a lower level. Which of the following liquids can climb up the wall of the glass vessel in which it is placed?",
+    "option_a": "Alcohol",
+    "option_b": "Liquid He",
+    "option_c": "Liquid N2",
+    "option_d": "Water",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Which of the following is not correct?",
+    "option_a": "Liquid helium is used as cryogenic liquid",
+    "option_b": "XeO3 has four pi and four sigma bonds",
+    "option_c": "The hybridisation of Xe in XeF4 is sp3d2",
+    "option_d": "Among noble gases, the occurrence of argon in highest in air",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "The molecular shape of SF4, CF4 and XeF4 are:",
+    "option_a": "the same with 2, 0 and 1 lone pairs of electrons on the central atoms respectively",
+    "option_b": "the same with 1, 1 and 1 lone pairs of electrons on the central atoms respectively",
+    "option_c": "different with 0, 1 and 2 lone pairs of electrons on the central atoms, respectively",
+    "option_d": "different with 1, 0 and 2 lone pairs of electrons on the central atoms, respectively",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "Argon is used:",
+    "option_a": "to obtained low temperature",
+    "option_b": "in high temperature welding",
+    "option_c": "in radio-therapy for treatment of cancer",
+    "option_d": "in filling airships",
+    "correct_option": "B"
+  },
+  {
+    "question_text": "Under ambient conditions, the total number of gases released as products in the final step of the reaction scheme shown below is: XeF6 ->(Complete Hydrolysis) P ->(OH-/H2O) Q ->(Slow disproportionation in OH-/H2O) Product + other product",
+    "option_a": "0",
+    "option_b": "1",
+    "option_c": "2",
+    "option_d": "3",
+    "correct_option": "C"
+  },
+  {
+    "question_text": "What are the products formed in the reaction of xenon hexafluoride with silicon dioxide?",
+    "option_a": "XeSiO4 + HF",
+    "option_b": "XeF2 + SiF4",
+    "option_c": "XeOF4 + SiF4",
+    "option_d": "XeO3 + SiF2",
+    "correct_option": "C"
+  },
+  {
+    "question_text": "Which statement is not correct!",
+    "option_a": "Xe is the most reactive among the rare gases",
+    "option_b": "He is an inert gas",
+    "option_c": "Radon is obtained from the decay of radium",
+    "option_d": "The most abundant rare gas found in the atmosphere is He",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "The mineral Clevite on heating gives:",
+    "option_a": "He",
+    "option_b": "Xe",
+    "option_c": "Ar",
+    "option_d": "Ra",
+    "correct_option": "A"
+  },
+  {
+    "question_text": "The word neon signifies:",
+    "option_a": "new",
+    "option_b": "old",
+    "option_c": "strange",
+    "option_d": "none of these",
+    "correct_option": "A"
+  },
+  {
+    "question_text": "Xe + PtF6 -> ? The product in reaction is",
+    "option_a": "O2+[PtF6]-",
+    "option_b": "XeF4",
+    "option_c": "XeF6",
+    "option_d": "Xe+[PtF6]-",
+    "correct_option": "D"
+  },
+  {
+    "question_text": "Which of the following is not a xenon flouride",
+    "option_a": "XeF4",
+    "option_b": "XeF2",
+    "option_c": "XeF3",
+    "option_d": "XeF6",
+    "correct_option": "C"
+  },
+  {
+    "question_text": "Match the compounds of Xe in column I with the molecular structure in column II. Column-I (a) XeF2 (b) XeF4 (c) XeO3 (d) XeOF4. Column-II (i) Square planar (ii) Linear (iii) Square pyramidal (iv) Pyramidal",
+    "option_a": "(a)-(ii) (b)-(i) (c)-(iii) (d)-(iv)",
+    "option_b": "(a)-(ii) (b)-(iv) (c)-(iii) (d)-(i)",
+    "option_c": "(a)-(ii) (b)-(iii) (c)-(i) (d)-(iv)",
+    "option_d": "(a)-(ii) (b)-(i) (c)-(iv) (d)-(iii)",
+    "correct_option": "D"
+  }
+  ]
+}

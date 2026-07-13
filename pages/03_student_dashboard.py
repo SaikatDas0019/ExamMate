@@ -37,48 +37,7 @@ st.markdown("""
     .progress-info span { font-size: 0.75rem; color: #4b5563; display: block; margin-bottom: 2px; }
     .progress-info b { font-size: 1.1rem; color: #111827; }
 
-    /* Teacher's Exam Code Input Section */
-    .stTextInput > div > div > input { 
-        background: #f9fafb !important; border: 1px solid #d1d5db !important; 
-        color: #111827 !important; border-radius: 12px !important; height: 46px !important; padding: 10px 16px !important; 
-    }
-    
-    /* Search Button Inline Alignment */
-    .search-btn-wrapper + div button {
-        background: transparent !important; border: 1px solid #d1d5db !important; 
-        color: #0ea5e9 !important; border-radius: 12px !important; height: 46px !important; width: 100%;
-        margin-top: 0px; 
-        display: flex; justify-content: center; align-items: center;
-    }
-    .search-btn-wrapper + div button:hover { background: #f0f9ff !important; border-color: #38bdf8 !important; }
-    
-    /* AI Generated Exam Button */
-    .ai-btn-wrapper + div button {
-        background: linear-gradient(90deg, #6b21a8 0%, #4c1d95 100%) !important;
-        border: none !important; color: #ffffff !important;
-        border-radius: 12px !important; padding: 12px !important;
-        font-weight: 600 !important; font-size: 1rem !important; margin-top: 10px;
-        box-shadow: 0 4px 12px rgba(107, 33, 168, 0.3);
-    }
-    .ai-btn-wrapper + div button p { color: #ffffff !important; margin: 0; }
-    .ai-btn-wrapper + div button:hover { opacity: 0.95; transform: translateY(-1px); }
-
-    /* My Exams Large Cards */
-    .exam-card-1 + div button { 
-        background: linear-gradient(180deg, #0f766e 0%, #115e59 100%) !important; 
-        border: none !important; height: 120px !important; border-radius: 16px !important; 
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .exam-card-2 + div button { 
-        background: linear-gradient(180deg, #6b21a8 0%, #4c1d95 100%) !important; 
-        border: none !important; height: 120px !important; border-radius: 16px !important;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .exam-card-1 + div button p, .exam-card-2 + div button p { color: #ffffff !important; font-weight: 600; }
-    
-    /* ========================================================
-       BUG FIX 1: Popular Exams Horizontal Scroll
-       ======================================================== */
+    /* Popular Exams Horizontal Scroll */
     .horizontal-scroll-container + div[data-testid="stHorizontalBlock"] {
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
@@ -88,8 +47,6 @@ st.markdown("""
         scrollbar-width: none; 
     }
     .horizontal-scroll-container + div[data-testid="stHorizontalBlock"]::-webkit-scrollbar { display: none; }
-    
-    /* Force columns to act as individual scrolling items without wrapping */
     .horizontal-scroll-container + div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
         width: auto !important;
         min-width: max-content !important; 
@@ -103,9 +60,10 @@ st.markdown("""
     .pill-adv + div button { background: #8b5cf6 !important; border: none !important; border-radius: 25px !important; padding: 6px 20px !important; }
     div[class^="pill-"] + div button p { color: #ffffff !important; font-weight: 600; margin: 0; font-size: 0.9rem;}
 
-    /* ========================================================
-       BUG FIX 2: Fixed Bottom Navigation Bar & Invisible Buttons
-       ======================================================== */
+    /* Navigation flow state buttons */
+    .flow-btn + div button { border-radius: 12px !important; font-weight: 600 !important; }
+
+    /* Fixed Bottom Navigation Bar & Invisible Buttons */
     .bottom-nav-overlay {
         position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff;
         border-top: 1px solid #e5e7eb; padding: 10px 0; z-index: 999;
@@ -115,29 +73,12 @@ st.markdown("""
     .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.75rem; color: #9ca3af; position: relative; width: 60px; font-weight: 600; }
     .nav-item.active { color: #22c55e; }
     .nav-icon { font-size: 1.4rem; }
-
-    /* Hide the native Streamlit buttons and layer them invisibly over the custom HTML nav */
     .nav-buttons-hider + div[data-testid="stHorizontalBlock"] {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        opacity: 0.01; /* Invisible but remains clickable */
-        max-width: 450px;
-        margin: 0 auto;
-        display: flex;
-        height: 60px;
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; opacity: 0.01; 
+        max-width: 450px; margin: 0 auto; display: flex; height: 60px;
     }
-    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-        flex: 1 1 0% !important; /* Distribute hitboxes evenly across the 4 tabs */
-    }
-    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] button {
-        height: 60px !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
+    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] > div[data-testid="column"] { flex: 1 1 0% !important; }
+    .nav-buttons-hider + div[data-testid="stHorizontalBlock"] button { height: 60px !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -146,7 +87,15 @@ st.markdown("""
 # BACKEND LOGIC & RENDER
 # ==========================================
 
-# 1. Authentication Check
+# State management for Exam Navigation Flow
+if "dash_flow_step" not in st.session_state:
+    st.session_state.dash_flow_step = "categories"
+if "selected_category" not in st.session_state:
+    st.session_state.selected_category = ""
+if "selected_subject" not in st.session_state:
+    st.session_state.selected_subject = ""
+
+# Authentication Check
 if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or st.session_state.get("students"):
     if st.session_state.get("user_catagory") != "Student":
         st.error("**Access Denied!** This page is only for Students.")
@@ -154,7 +103,7 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
         
     user_name = st.session_state.get("user_name", "Student")
 
-    # 2. Header Section
+    # Header Section
     st.markdown(f"""
     <div class="profile-header">
         <div class="profile-left">
@@ -168,7 +117,7 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     </div>
     """, unsafe_allow_html=True)
 
-    # 3. My Progress Section
+    # My Progress Section
     st.markdown('<div class="section-title">📈 My Progress</div>', unsafe_allow_html=True)
     st.markdown("""
     <div class="progress-grid">
@@ -179,71 +128,112 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     </div>
     """, unsafe_allow_html=True)
 
-    # 4. Teacher's Exam Code & AI Exam Button
-    st.markdown('<div class="section-title">Teacher\'s Exam Code:</div>', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns([0.85, 0.15]) 
-    with col1:
-        st.session_state.exam_code = st.text_input("HiddenLabel", placeholder="e.g: PHY-101", label_visibility="collapsed")
-    with col2:
-        st.markdown('<div class="search-btn-wrapper"></div>', unsafe_allow_html=True)
-        if st.button("🔍", key="search_exam"):
-            st.switch_page("pages/08_student_exam.py")
-            
-    st.markdown('<div class="ai-btn-wrapper"></div>', unsafe_allow_html=True)
-    if st.button("🤖 AI Generated Exam ✨", use_container_width=True): 
-        st.toast("AI Exam feature coming soon!") 
+    st.write("---")
 
-    # 5. My Exams
-    st.markdown('<div class="section-title">My Exams &nbsp; <span style="font-size:0.8rem; color:#22c55e;">></span></div>', unsafe_allow_html=True)
-    col_ex1, col_ex2 = st.columns(2)
-    with col_ex1:
-        st.markdown('<div class="exam-card-1"></div>', unsafe_allow_html=True)
-        clas_11 = st.button("Class 11 \n\n Sem 1 📖", use_container_width=True)
-    with col_ex2:
-        st.markdown('<div class="exam-card-2"></div>', unsafe_allow_html=True)
-        clas_12 = st.button("Class 12 \n\n Sem 3 📖", use_container_width=True)
 
-    # 6. Popular Exams (Horizontal Scroll)
-    st.markdown('<div class="section-title">Popular Exams &nbsp; <span style="font-size:0.8rem; color:#22c55e;">></span></div>', unsafe_allow_html=True)
+# ==========================================
+# 0. INITIALIZE SESSION STATES
+# ==========================================
+# Ensure states exist so the app doesn't throw an error on the first load
+if "dash_flow_step" not in st.session_state:
+    st.session_state.dash_flow_step = "categories"
+if "selected_category" not in st.session_state:
+    st.session_state.selected_category = ""
+if "selected_subject" not in st.session_state:
+    st.session_state.selected_subject = ""
+
+# ==========================================
+# 1. DEFINE RENDER FUNCTIONS
+# ==========================================
+def exam_flow():
+    st.markdown(f"**Selected:** {st.session_state.selected_category} > {st.session_state.selected_subject}")
     
+    if st.button("⬅️ Change Subject"):
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        
+    st.write("")
+    
+    # Build prefix based on selections to construct the DB exam code
+    cat_formatted = st.session_state.selected_category.replace(" ", "").upper()
+    sub_formatted = st.session_state.selected_subject
+    
+    st.markdown('<div class="flow-btn"></div>', unsafe_allow_html=True)
+    if st.button("Class 12 Chemistry - Group 18 Elements (Noble Gases)", type="primary", use_container_width=True):
+        st.session_state.exam_code = 'EXAM-1723'
+        st.switch_page("pages/08_student_exam.py")
+    
+    st.markdown('<div class="flow-btn"></div>', unsafe_allow_html=True)
+    if st.button("Exam 2", type="primary", use_container_width=True):
+        st.session_state.exam_code = f"{cat_formatted}-{sub_formatted}-02"
+        st.switch_page("pages/08_student_exam.py")
+    
+    st.markdown('<div class="flow-btn"></div>', unsafe_allow_html=True)
+    if st.button("Exam 3", type="primary", use_container_width=True):
+        st.session_state.exam_code = f"{cat_formatted}-{sub_formatted}-03"
+        st.switch_page("pages/08_student_exam.py")
+
+def subject_flow():
+    st.markdown(f"**Selected:** {st.session_state.selected_category}")
+    
+    if st.button("⬅️ Change Category"):
+        st.session_state.dash_flow_step = "categories"
+        st.rerun()
+        
+    st.write("")
+    
+    if st.button("Physics ⚛️", use_container_width=True):
+        st.session_state.selected_subject = "PHY"
+        st.session_state.dash_flow_step = "exams"
+        st.rerun() 
+        # Notice we removed exam_flow() from here
+    
+    if st.button("Chemistry 🧪", use_container_width=True):
+        st.session_state.selected_subject = "CHEM"
+        st.session_state.dash_flow_step = "exams"
+        st.rerun()
+    
+    if st.button("Math 📐", use_container_width=True):
+        st.session_state.selected_subject = "MATH"
+        st.session_state.dash_flow_step = "exams"
+        st.rerun()
+
+# ==========================================
+# 2. MAIN EXECUTION ROUTER
+# ==========================================
+st.markdown('<div class="section-title">Explore Exams &nbsp; <span style="font-size:0.8rem; color:#22c55e;">></span></div>', unsafe_allow_html=True)
+
+# Route the user to the correct UI based on the current state
+if st.session_state.dash_flow_step == "categories":
     st.markdown('<div class="horizontal-scroll-container"></div>', unsafe_allow_html=True)
-    col_p1, col_p2, col_p3, col_p4 = st.columns(4)
-    with col_p1:
-        st.markdown('<div class="pill-jee"></div>', unsafe_allow_html=True)
-        jee_main = st.button("JEE Main")
-    with col_p2:
-        st.markdown('<div class="pill-neet"></div>', unsafe_allow_html=True)
-        neet = st.button("NEET")
-    with col_p3:
-        st.markdown('<div class="pill-wbjee"></div>', unsafe_allow_html=True)
-        wbjee = st.button("WBJEE")
-    with col_p4:
-        st.markdown('<div class="pill-adv"></div>', unsafe_allow_html=True)
-        jee_adv = st.button("JEE Advance")
+    
+    if st.button("JEE Main", use_container_width=True):
+        st.session_state.selected_category = "JEE Main"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        # Removed subject_flow() from here
+        
+    if st.button("NEET", use_container_width=True):
+        st.session_state.selected_category = "NEET"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        
+    if st.button("WBJEE", use_container_width=True):
+        st.session_state.selected_category = "WBJEE"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        
+    if st.button("JEE Advance", use_container_width=True):
+        st.session_state.selected_category = "JEE Advance"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
 
+elif st.session_state.dash_flow_step == "subjects":
+    subject_flow()
 
-    # 7. Bottom Navigation Bar
-    st.markdown("""
-    <div class="bottom-nav-overlay">
-        <div class="nav-item active"><div class="nav-icon">🏠</div><span>Home</span></div>
-        <div class="nav-item"><div class="nav-icon">📄</div><span>Tests</span></div>
-        <div class="nav-item"><div class="nav-icon">📊</div><span>Analytics</span></div>
-        <div class="nav-item"><div class="nav-icon">👤</div><span>Profile</span></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Wrap the routing buttons in a specific CSS marker so we can target them reliably
-    st.markdown('<div class="nav-buttons-hider"></div>', unsafe_allow_html=True)
-    c1, c2, c3, c4 = st.columns(4)
-    with c1: 
-        if st.button("HomeNav", key="b_home"): pass 
-    with c2: 
-        if st.button("TestNav", key="b_test"): pass 
-    with c3: 
-        if st.button("AnalyticNav", key="b_analytics"): st.switch_page("pages/09_student_analytics.py")
-    with c4: 
-        if st.button("ProfileNav", key="b_profile"): st.switch_page("pages/05_student_profile.py")
-
+elif st.session_state.dash_flow_step == "exams":
+    exam_flow()
 else:
     st.warning("Please, sign-in first.")
+    if st.button("⬅️ Sign In page"):
+        st.switch_page("pages/02_signin.py")
