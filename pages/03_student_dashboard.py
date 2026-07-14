@@ -1,4 +1,18 @@
 import streamlit as st
+import sqlite3
+import pandas as pd
+
+# Authentication Check
+if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or st.session_state.get("students"):
+    if st.session_state.get("user_catagory") != "Student":
+        st.error("**Access Denied!** This page is only for Students.")
+        st.stop()
+else:
+    st.warning("Please, sign-in first.")
+    if st.button("⬅️ Sign In page"):
+        st.switch_page("pages/02_signin.py")
+    st.stop()
+        
 
 # ==========================================
 # UI/UX CSS INJECTION (LIGHT THEME & MOBILE FIRST)
@@ -95,27 +109,13 @@ if "selected_category" not in st.session_state:
 if "selected_subject" not in st.session_state:
     st.session_state.selected_subject = ""
 
-# Authentication Check
-if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or st.session_state.get("students"):
-    if st.session_state.get("user_catagory") != "Student":
-        st.error("**Access Denied!** This page is only for Students.")
-        st.stop()
-        
     user_name = st.session_state.get("user_name", "Student")
 
     # Header Section
-    st.markdown(f"""
-    <div class="profile-header">
-        <div class="profile-left">
-            <div class="avatar">👤</div>
-            <div class="greeting">
-                <h3>Hi, {user_name}</h3>
-                <p>Let's ace your exams! 🚀</p>
-            </div>
-        </div>
-        <div class="bell-icon">🔔</div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.header(f"Hi, {user_name}")
+
+    if st.button("👤 Profile"):
+        st.switch_page("pages/05_student_profile.py")
 
     # My Progress Section
     st.markdown('<div class="section-title">📈 My Progress</div>', unsafe_allow_html=True)
@@ -128,8 +128,22 @@ if st.session_state.get("logged_in") or st.session_state.get("is_logged_in") or 
     </div>
     """, unsafe_allow_html=True)
 
-    st.write("---")
+st.write("---")
 
+# ==========================================
+# Exam Section
+# ==========================================
+
+# ==========================================
+# Search & Generate Exam
+# ==========================================
+exam_code = st.text_input("Exam Code:", placeholder="eg: 'EXAM-1234'")
+
+if st.button("🔍 Search"):
+    st.session_state.exam_code = exam_code
+    st.switch_page("pages/08_student_exam.py")
+
+st.write("")
 
 # ==========================================
 # 0. INITIALIZE SESSION STATES
@@ -143,9 +157,188 @@ if "selected_subject" not in st.session_state:
     st.session_state.selected_subject = ""
 
 # ==========================================
-# 1. DEFINE RENDER FUNCTIONS
+# 1. MAIN EXECUTION ROUTER
 # ==========================================
-def exam_flow():
+st.markdown('<div class="section-title">Explore Exams &nbsp; <span style="font-size:0.8rem; color:#22c55e;">></span></div>', unsafe_allow_html=True)
+
+# Route the user to the correct UI based on the current state
+if st.session_state.dash_flow_step == "categories":
+    st.markdown('<div class="horizontal-scroll-container"></div>', unsafe_allow_html=True)
+    
+    if st.button(f"**Class-11 Sem-1**", use_container_width=True):
+        st.session_state.selected_category = "CLASS-11 SEM-1"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+    
+    if st.button("**Class-12 Sem-3**", use_container_width=True):
+        st.session_state.selected_category = "CLASS-12 SEM-3"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+
+    st.write("---")
+
+    if st.button("**JEE Main**", use_container_width=True):
+        st.session_state.selected_category = "JEE Main"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        # Removed subject_flow() from here
+        
+    if st.button("**NEET**", use_container_width=True):
+        st.session_state.selected_category = "NEET"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        
+    if st.button("**WBJEE**", use_container_width=True):
+        st.session_state.selected_category = "WBJEE"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+        
+    if st.button("**JEE Advance**", use_container_width=True):
+        st.session_state.selected_category = "JEE Advance"
+        st.session_state.dash_flow_step = "subjects"
+        st.rerun()
+
+elif st.session_state.dash_flow_step == "subjects":
+    st.markdown(f"**Selected:** {st.session_state.selected_category}")
+    
+    if st.button("⬅️ Change Category"):
+        st.session_state.dash_flow_step = "categories"
+        st.rerun()
+        
+    st.write("")
+    if st.session_state.selected_category == "JEE Main":
+        if st.button("Physics ⚛️", use_container_width=True):
+            st.session_state.selected_subject = "PHY"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+            # Notice we removed exam_flow() from here
+
+        if st.button("Chemistry 🧪", use_container_width=True):
+            st.session_state.selected_subject = "CHEM"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("Math 📐", use_container_width=True):
+            st.session_state.selected_subject = "MATH"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+        
+    elif st.session_state.selected_category == "WBJEE":
+        if st.button("Physics ⚛️", use_container_width=True):
+            st.session_state.selected_subject = "PHY"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+            # Notice we removed exam_flow() from here
+
+        if st.button("Chemistry 🧪", use_container_width=True):
+            st.session_state.selected_subject = "CHEM"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("Math 📐", use_container_width=True):
+            st.session_state.selected_subject = "MATH"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+    elif st.session_state.selected_category == "JEE Advance":
+        if st.button("Physics ⚛️", use_container_width=True):
+            st.session_state.selected_subject = "PHY"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+            # Notice we removed exam_flow() from here
+
+        if st.button("Chemistry 🧪", use_container_width=True):
+            st.session_state.selected_subject = "CHEM"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("Math 📐", use_container_width=True):
+            st.session_state.selected_subject = "MATH"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+        
+    elif st.session_state.selected_category == "NEET":
+        if st.button("Physics ⚛️", use_container_width=True):
+            st.session_state.selected_subject = "PHY"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+            # Notice we removed exam_flow() from here
+
+        if st.button("Chemistry 🧪", use_container_width=True):
+            st.session_state.selected_subject = "CHEM"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("Biology 🧬", use_container_width=True):
+            st.session_state.selected_subject = "BIO"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+    elif st.session_state.selected_category == "CLASS-11 SEM-1":
+        if st.button("Bengali 📖", use_container_width=True):
+            st.session_state.selected_subject = "BEN"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("English 📄", use_container_width=True):
+            st.session_state.selected_subject = "ENG"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+
+        if st.button("Math 📐", use_container_width=True):
+            st.session_state.selected_subject = "MATH"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+        
+        if st.button("Physics ⚛️", use_container_width=True):
+            st.session_state.selected_subject = "PHY"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+            # Notice we removed exam_flow() from here
+
+        if st.button("Chemistry 🧪", use_container_width=True):
+            st.session_state.selected_subject = "CHEM"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("Biology 🧬", use_container_width=True):
+            st.session_state.selected_subject = "BIO"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+    elif st.session_state.selected_category == "CLASS-12 SEM-3":
+        if st.button("Bengali 📖", use_container_width=True):
+            st.session_state.selected_subject = "BEN"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("English 📄", use_container_width=True):
+            st.session_state.selected_subject = "ENG"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+
+        if st.button("Math 📐", use_container_width=True):
+            st.session_state.selected_subject = "MATH"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+        
+        if st.button("Physics ⚛️", use_container_width=True):
+            st.session_state.selected_subject = "PHY"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun() 
+            # Notice we removed exam_flow() from here
+
+        if st.button("Chemistry 🧪", use_container_width=True):
+            st.session_state.selected_subject = "CHEM"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+        if st.button("Biology 🧬", use_container_width=True):
+            st.session_state.selected_subject = "BIO"
+            st.session_state.dash_flow_step = "exams"
+            st.rerun()
+
+elif st.session_state.dash_flow_step == "exams":
     st.markdown(f"**Selected:** {st.session_state.selected_category} > {st.session_state.selected_subject}")
     
     if st.button("⬅️ Change Subject"):
@@ -159,81 +352,27 @@ def exam_flow():
     sub_formatted = st.session_state.selected_subject
     
     st.markdown('<div class="flow-btn"></div>', unsafe_allow_html=True)
-    if st.button("Class 12 Chemistry - Group 18 Elements (Noble Gases)", type="primary", use_container_width=True):
-        st.session_state.exam_code = 'EXAM-1723'
-        st.switch_page("pages/08_student_exam.py")
-    
-    st.markdown('<div class="flow-btn"></div>', unsafe_allow_html=True)
-    if st.button("Exam 2", type="primary", use_container_width=True):
-        st.session_state.exam_code = f"{cat_formatted}-{sub_formatted}-02"
-        st.switch_page("pages/08_student_exam.py")
-    
-    st.markdown('<div class="flow-btn"></div>', unsafe_allow_html=True)
-    if st.button("Exam 3", type="primary", use_container_width=True):
-        st.session_state.exam_code = f"{cat_formatted}-{sub_formatted}-03"
-        st.switch_page("pages/08_student_exam.py")
 
-def subject_flow():
-    st.markdown(f"**Selected:** {st.session_state.selected_category}")
-    
-    if st.button("⬅️ Change Category"):
-        st.session_state.dash_flow_step = "categories"
-        st.rerun()
-        
-    st.write("")
-    
-    if st.button("Physics ⚛️", use_container_width=True):
-        st.session_state.selected_subject = "PHY"
-        st.session_state.dash_flow_step = "exams"
-        st.rerun() 
-        # Notice we removed exam_flow() from here
-    
-    if st.button("Chemistry 🧪", use_container_width=True):
-        st.session_state.selected_subject = "CHEM"
-        st.session_state.dash_flow_step = "exams"
-        st.rerun()
-    
-    if st.button("Math 📐", use_container_width=True):
-        st.session_state.selected_subject = "MATH"
-        st.session_state.dash_flow_step = "exams"
-        st.rerun()
+    # Add Exam...
 
-# ==========================================
-# 2. MAIN EXECUTION ROUTER
-# ==========================================
-st.markdown('<div class="section-title">Explore Exams &nbsp; <span style="font-size:0.8rem; color:#22c55e;">></span></div>', unsafe_allow_html=True)
+    if st.session_state.selected_category == "CLASS-12 SEM-3" and st.session_state.selected_subject == "CHEM":
+        if st.button("Class 12 Chemistry - Group 18 Elements (Noble Gases)", use_container_width=True):
+            st.session_state.exam_code = "EXAM-1723"
+            st.switch_page("pages/08_student_exam.py")
 
-# Route the user to the correct UI based on the current state
-if st.session_state.dash_flow_step == "categories":
-    st.markdown('<div class="horizontal-scroll-container"></div>', unsafe_allow_html=True)
-    
-    if st.button("JEE Main", use_container_width=True):
-        st.session_state.selected_category = "JEE Main"
-        st.session_state.dash_flow_step = "subjects"
-        st.rerun()
-        # Removed subject_flow() from here
-        
-    if st.button("NEET", use_container_width=True):
-        st.session_state.selected_category = "NEET"
-        st.session_state.dash_flow_step = "subjects"
-        st.rerun()
-        
-    if st.button("WBJEE", use_container_width=True):
-        st.session_state.selected_category = "WBJEE"
-        st.session_state.dash_flow_step = "subjects"
-        st.rerun()
-        
-    if st.button("JEE Advance", use_container_width=True):
-        st.session_state.selected_category = "JEE Advance"
-        st.session_state.dash_flow_step = "subjects"
-        st.rerun()
+        if st.button("Class 12 Chemistry HS Sem-3 2025", use_container_width=True):
+            st.session_state.exam_code = "EXAM-5732"
+            st.switch_page("pages/08_student_exam.py")
 
-elif st.session_state.dash_flow_step == "subjects":
-    subject_flow()
+    elif st.session_state.selected_category == "CLASS-12 SEM-3" and st.session_state.selected_subject == "BEN":
+        if st.button("Class 12 Bengali HS Sem-3 2025", use_container_width=True):
+            st.session_state.exam_code = "EXAM-1818"
+            st.switch_page("pages/08_student_exam.py")
 
-elif st.session_state.dash_flow_step == "exams":
-    exam_flow()
-else:
-    st.warning("Please, sign-in first.")
-    if st.button("⬅️ Sign In page"):
-        st.switch_page("pages/02_signin.py")
+    elif st.session_state.selected_category == "CLASS-12 SEM-3" and st.session_state.selected_subject == "PHY":
+        if st.button("Class 12 Physics HS Sem-3 2025", use_container_width=True):
+            st.session_state.exam_code = "EXAM-7271"
+            st.switch_page("pages/08_student_exam.py")
+
+    else:
+        st.subheader("No Exam")

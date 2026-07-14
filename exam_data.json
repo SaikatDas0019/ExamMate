@@ -1,248 +1,288 @@
 
 {
-  "exam_name": "Class 12 Chemistry - Group 18 Elements (Noble Gases)",
+  "exam_name": "Class 12 Chemistry HS Sem-3 2025",
   "timer_minutes": 60,
   "teacher_email": "dasbabu938207@gmail.com",
-  "questions" : [
-  {
-    "question_text": "Which of the following structure is most expected for the molecule XeOF4?",
-    "option_a": "Tetrahedral",
-    "option_b": "Square pyramid",
-    "option_c": "Square planar",
-    "option_d": "Octahedral",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Which is mismatched regarding the shape?",
-    "option_a": "XeF4 = Square planar",
-    "option_b": "XeOF4 = Square Pyramidal",
-    "option_c": "XeF6 = Distorted Octahedral",
-    "option_d": "XeO3 = Bent Shape",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "MF + XeF4 -> 'A' (M+ = Alkali metal cation). The state of hybridisation of the central atom in 'A' and shape of the species are:",
-    "option_a": "sp3d, TBP",
-    "option_b": "sp3d3, distorted octahedral",
-    "option_c": "sp3d2, pentagonal planar",
-    "option_d": "No compound formed at all",
-    "correct_option": "C"
-  },
-  {
-    "question_text": "Match the compounds given in column I with the hybridisation and shape given in column II and mark the correct option. Column I (A. XeF6, B. XeO3, C. XeOF4, D. XeF4) Column II (1. Distorted octahedral, 2. Square planar, 3. Pyramidal, 4. Square pyramidal)",
-    "option_a": "1 2 4 3",
-    "option_b": "4 3 1 2",
-    "option_c": "4 1 2 3",
-    "option_d": "1 3 4 2",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "XeF2 and XeF6 are separately hydrolysed then;",
-    "option_a": "both give out O2",
-    "option_b": "XeF6 gives O2 and XeF2 does not",
-    "option_c": "XeF2 alone gives O2",
-    "option_d": "Neither of them gives HF",
-    "correct_option": "C"
-  },
-  {
-    "question_text": "XeF6 dissolves in anhydrous HF to give a good conducting solution which contains:",
-    "option_a": "H+ and XeF7- ion",
-    "option_b": "HF2- and XeF5+ ions",
-    "option_c": "HXeF6+ and F-",
-    "option_d": "none of these",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Which of the following is not true about helium?",
-    "option_a": "It has the lowest boiling point",
-    "option_b": "It has the highest first ionization energy",
-    "option_c": "It can diffuse through rubber and plastic material",
-    "option_d": "It can form clathrate compounds",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "Which of the following is an uncommon hydrolysis product of XeF2 and XeF4?",
-    "option_a": "Xe",
-    "option_b": "XeO3",
-    "option_c": "HF",
-    "option_d": "O2",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "SbF5 reacts with XeF4 to form an adduct. The shapes of cation and anion in the adduct are respectively:",
-    "option_a": "square planar, trigonal bipyramidal",
-    "option_b": "T-shaped, Octahedral",
-    "option_c": "square pyramidal, octahedral",
-    "option_d": "square planar, octahedral",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Incorrect statement regarding following reactions is: XeF6 + Excess H2O -> 'X' + HF ; XeF6 + 2H2O -> 'Y' + HF",
-    "option_a": "'X' is explosive",
-    "option_b": "'Y' is an oxyacid of xenon",
-    "option_c": "Both are example of non-redox reaction",
-    "option_d": "XeF6 can undergo partial hydrolysis",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Which of the following noble gas does not form clathrate compound?",
-    "option_a": "Kr",
-    "option_b": "Ne",
-    "option_c": "Xe",
-    "option_d": "Ar",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Radon is a noble gas. Its radioactivity is used in the treatment of:",
-    "option_a": "typhoid",
-    "option_b": "cancer",
-    "option_c": "cough and cold",
-    "option_d": "thyroid",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Which of the following statements is false?",
-    "option_a": "H3PO2, H3PO3 and H3PO4 all are tribasic and reducing in nature.",
-    "option_b": "Amongst anions NO3-, SO3 2-, CO3 2- and BO3 3- only SO3 2- have p pi - d pi bonding.",
-    "option_c": "Amongst anions SO3 2-, SO4 2-, S2O4 2- and HSO4-, SO3 2- is basic and reducing in nature.",
-    "option_d": "Number of lone pair(s) of electrons on Xe atoms in XeF2, XeF4 and XeF6 are 3, 2 and 1 respectively.",
-    "correct_option": "A"
-  },
-  {
-    "question_text": "Which one of the following does not exist?",
-    "option_a": "XeOF4",
-    "option_b": "NeF2",
-    "option_c": "XeF2",
-    "option_d": "XeF6",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "The gas used in gas thermometer is:",
-    "option_a": "He",
-    "option_b": "O2",
-    "option_c": "Xe",
-    "option_d": "Ne",
-    "correct_option": "A"
-  },
-  {
-    "question_text": "Welding of magnesium can be done in an atmosphere of:",
-    "option_a": "O2",
-    "option_b": "Ar",
-    "option_c": "N2",
-    "option_d": "all of these",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Which one of the following statements regarding helium is incorrect?",
-    "option_a": "It is used to produce and sustain powerful superconducting magnets.",
-    "option_b": "It is used as a cryogenic agent for carrying out experiments at low temperatures.",
-    "option_c": "It is used in filling balloons for meterological observations because it is lighter and non-inflammable.",
-    "option_d": "It is used as dilute for oxygen in modern diving apparatus because of its high solubility in blood.",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "Which one is incorrect statement?",
-    "option_a": "He is used in gas cooled nuclear reactors",
-    "option_b": "He is used as a cryogenic agent for carrying out experiments at low temperature",
-    "option_c": "He is used to produce and sustain powerful super conducting magnets",
-    "option_d": "He is used to fill gas balloons instead of H2 because it is lighter and non-inflammable",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "Liquid flow from a higher to a lower level. Which of the following liquids can climb up the wall of the glass vessel in which it is placed?",
-    "option_a": "Alcohol",
-    "option_b": "Liquid He",
-    "option_c": "Liquid N2",
-    "option_d": "Water",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Which of the following is not correct?",
-    "option_a": "Liquid helium is used as cryogenic liquid",
-    "option_b": "XeO3 has four pi and four sigma bonds",
-    "option_c": "The hybridisation of Xe in XeF4 is sp3d2",
-    "option_d": "Among noble gases, the occurrence of argon in highest in air",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "The molecular shape of SF4, CF4 and XeF4 are:",
-    "option_a": "the same with 2, 0 and 1 lone pairs of electrons on the central atoms respectively",
-    "option_b": "the same with 1, 1 and 1 lone pairs of electrons on the central atoms respectively",
-    "option_c": "different with 0, 1 and 2 lone pairs of electrons on the central atoms, respectively",
-    "option_d": "different with 1, 0 and 2 lone pairs of electrons on the central atoms, respectively",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "Argon is used:",
-    "option_a": "to obtained low temperature",
-    "option_b": "in high temperature welding",
-    "option_c": "in radio-therapy for treatment of cancer",
-    "option_d": "in filling airships",
-    "correct_option": "B"
-  },
-  {
-    "question_text": "Under ambient conditions, the total number of gases released as products in the final step of the reaction scheme shown below is: XeF6 ->(Complete Hydrolysis) P ->(OH-/H2O) Q ->(Slow disproportionation in OH-/H2O) Product + other product",
-    "option_a": "0",
-    "option_b": "1",
-    "option_c": "2",
-    "option_d": "3",
-    "correct_option": "C"
-  },
-  {
-    "question_text": "What are the products formed in the reaction of xenon hexafluoride with silicon dioxide?",
-    "option_a": "XeSiO4 + HF",
-    "option_b": "XeF2 + SiF4",
-    "option_c": "XeOF4 + SiF4",
-    "option_d": "XeO3 + SiF2",
-    "correct_option": "C"
-  },
-  {
-    "question_text": "Which statement is not correct!",
-    "option_a": "Xe is the most reactive among the rare gases",
-    "option_b": "He is an inert gas",
-    "option_c": "Radon is obtained from the decay of radium",
-    "option_d": "The most abundant rare gas found in the atmosphere is He",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "The mineral Clevite on heating gives:",
-    "option_a": "He",
-    "option_b": "Xe",
-    "option_c": "Ar",
-    "option_d": "Ra",
-    "correct_option": "A"
-  },
-  {
-    "question_text": "The word neon signifies:",
-    "option_a": "new",
-    "option_b": "old",
-    "option_c": "strange",
-    "option_d": "none of these",
-    "correct_option": "A"
-  },
-  {
-    "question_text": "Xe + PtF6 -> ? The product in reaction is",
-    "option_a": "O2+[PtF6]-",
-    "option_b": "XeF4",
-    "option_c": "XeF6",
-    "option_d": "Xe+[PtF6]-",
-    "correct_option": "D"
-  },
-  {
-    "question_text": "Which of the following is not a xenon flouride",
-    "option_a": "XeF4",
-    "option_b": "XeF2",
-    "option_c": "XeF3",
-    "option_d": "XeF6",
-    "correct_option": "C"
-  },
-  {
-    "question_text": "Match the compounds of Xe in column I with the molecular structure in column II. Column-I (a) XeF2 (b) XeF4 (c) XeO3 (d) XeOF4. Column-II (i) Square planar (ii) Linear (iii) Square pyramidal (iv) Pyramidal",
-    "option_a": "(a)-(ii) (b)-(i) (c)-(iii) (d)-(iv)",
-    "option_b": "(a)-(ii) (b)-(iv) (c)-(iii) (d)-(i)",
-    "option_c": "(a)-(ii) (b)-(iii) (c)-(i) (d)-(iv)",
-    "option_d": "(a)-(ii) (b)-(i) (c)-(iv) (d)-(iii)",
-    "correct_option": "D"
-  }
+  "questions": [
+    {
+      "question_text": "নীচের বিক্রিয়াতে উৎপন্ন যৌগ X ও Y-কে শনাক্ত করো: C6H5OCH3 + HI -> X + Y [cite: 280]",
+      "option_a": "X: C6H5OH, Y: CH3I",
+      "option_b": "X: C6H5I, Y: CH3OH",
+      "option_c": "X: C6H5I, Y: CH3I",
+      "option_d": "X: C6H5OH, Y: CH3OH",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "নীচের কোন্ পলিমারটি সংঘনন পলিমারাইজেশান (condensation polymerization) দ্বারা প্রস্তুত করা হয়? [cite: 282]",
+      "option_a": "টেফলন",
+      "option_b": "PAN",
+      "option_c": "নাইলন-6, 6",
+      "option_d": "LDPE",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "প্রোটিনের প্রতিটি পলিপেপটাইড শৃঙ্খলে (Polypeptide chain) অ্যামাইনো অ্যাসিডগুলি নির্দিষ্ট ক্রমিক বিন্যাসে সংযুক্ত থাকে। অ্যামাইনো অ্যাসিডগুলির এই নির্দিষ্ট বিন্যাসকে বলে [cite: 285]",
+      "option_a": "প্রোটিনের প্রাইমারী গঠন",
+      "option_b": "প্রোটিনের সেকেন্ডারী গঠন",
+      "option_c": "প্রোটিনের টারসিয়ারী গঠন",
+      "option_d": "প্রোটিনের কোয়াটারনারি গঠন",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "নীচের কোন্ ক্ষারকটি DNA-তে অনুপস্থিত? [cite: 290]",
+      "option_a": "থাইমিন",
+      "option_b": "গুয়ানিন",
+      "option_c": "ইউরাসিল",
+      "option_d": "অ্যাডেনিন",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "সমতড়িৎ বিন্দুতে গ্লাইসিনের গঠনটি হলো [cite: 294]",
+      "option_a": "H2N-CH2-COOH",
+      "option_b": "H2N-CH2-COO(-)",
+      "option_c": "H3N(+)-CH2-COOH",
+      "option_d": "H3N(+)-CH2-COO(-)",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "নিচের কোন্টির দ্বিমেরু ভ্রামক (Dipole moment) শূন্য (zero)? [cite: 292]",
+      "option_a": "XeF6",
+      "option_b": "XeO3",
+      "option_c": "XeF4",
+      "option_d": "XeOF2",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নীচের কোন্টির ইলেকট্রন আসক্তি সর্বনিম্ন? [cite: 295]",
+      "option_a": "Te",
+      "option_b": "Se",
+      "option_c": "S",
+      "option_d": "O",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "নীচের কোন্টি সবচেয়ে বেশী আম্লিক? [cite: 298]",
+      "option_a": "HOCl",
+      "option_b": "HClO2",
+      "option_c": "HClO4",
+      "option_d": "HClO3",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নীচের কোন্টি বিজারণ দ্বারা বিরঞ্জন ঘটায় যা অস্থায়ী? [cite: 300]",
+      "option_a": "H2O2",
+      "option_b": "O3",
+      "option_c": "SO2",
+      "option_d": "Cl2",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "XeF6 যৌগটির ক্ষেত্রে নীচের কোন্ বক্তব্যটি সঠিক নয়? [cite: 302]",
+      "option_a": "Xe-এর জারণ সংখ্যা +6",
+      "option_b": "XeF6-তে Xe-র সংকরায়ণ sp3d3",
+      "option_c": "XeF6 অণুর আকৃতি বিকৃত অষ্টতলকীয়",
+      "option_d": "XeF6 -এর আর্দ্র বিশ্লেষণে শুধুমাত্র Xe, HF ও O2 উৎপন্ন হয়",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "নিম্নে উল্লিখিত দ্রবণগুলির মধ্যে কোন্টির হিমাঙ্ক সর্বনিম্ন? [cite: 309]",
+      "option_a": "1 (m) সুক্রোজ",
+      "option_b": "1 (m) KCl",
+      "option_c": "1 (m) MgCl2",
+      "option_d": "1 (m) গ্লুকোজ",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নিচের কোন্ গ্যাসটি হেনরীর সূত্র মেনে চলে না? [cite: 305]",
+      "option_a": "O2",
+      "option_b": "H2",
+      "option_c": "N2",
+      "option_d": "NH3",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "কিভাবে লায়োফোবিক সল সংরক্ষণ করা যায় [cite: 314]",
+      "option_a": "স্ফুটনের দ্বারা",
+      "option_b": "তড়িৎবিশ্লেষ্য পদার্থ যোগ করে",
+      "option_c": "তঞ্চনকারী পদার্থ যোগ করে",
+      "option_d": "লায়োফিলিক সল যোগ করে",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "নীচের কোন্ ক্ষেত্রে তঞ্চন (coagulation) হয় না? [cite: 312]",
+      "option_a": "NaCl ব্যবহার করে রক্তক্ষরণ বন্ধ করা",
+      "option_b": "ব-দ্বীপ গঠন",
+      "option_c": "পেপটাইজেশান বা অপলয়ন",
+      "option_d": "পুকুরের জলকে পটাশ অ্যালম দ্বারা শুদ্ধিকরণ",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "যদি 100 গ্রাম জলে, 10 গ্রাম একটি অনুদ্বায়ী, অ-বিয়োজিত, অ-সংযোজিত প্রকৃতির দ্রাব (আণবিক ভর 100) যোগ করলে দ্রবণের স্ফুটনাঙ্কের উন্নয়ন হয় ΔTb, তবে জলের স্ফুটনাঙ্ক ধ্রুবক 'Kb' হবে [cite: 317]",
+      "option_a": "100(ΔTb)",
+      "option_b": "10(ΔTb)",
+      "option_c": "ΔTb/100",
+      "option_d": "ΔTb",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "নিচের বিক্রিয়ার ক্ষেত্রে বিক্রিয়াজাত পদার্থ 'P'-কে শনাক্ত করো: m-Br-C6H4-CH2Cl + CH3ONa/CH3OH -> P [cite: 317]",
+      "option_a": "m-CH3O-C6H4-CH2Cl",
+      "option_b": "m-CH3O-C6H4-CH2-OCH3",
+      "option_c": "m-Br-C6H4-CH2-OCH3",
+      "option_d": "m-OH-C6H4-CH2OH",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নিম্নলিখিত যৌগগুলির আম্লিকতার ক্রমটি হলো (I) Phenol (II) p-nitrophenol (III) p-methylphenol (IV) 2,4-dinitrophenol [cite: 321]",
+      "option_a": "II > III > I > IV",
+      "option_b": "II > IV > I > III",
+      "option_c": "IV > II > I > III",
+      "option_d": "IV > II > III > I",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নিচের যৌগটির IUPAC নামটি হলো CH3-CH(Br)-OH (Fischer projection: CH3 top, H bottom, Br left, OH right) [cite: 320]",
+      "option_a": "(1R)-1-bromoethan-1-ol",
+      "option_b": "(2R)-2-bromoethan-1-ol",
+      "option_c": "(1S)-1-bromoethan-1-ol",
+      "option_d": "(2S)-2-bromoethan-2-ol",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নিচের রূপান্তরটি সম্পন্ন করতে ব্যবহৃত বিকারকটি হলো: Phenol -> Salicylaldehyde [cite: 322]",
+      "option_a": "i) CHCl3, NaOH, 60-80°C ii) dil. HCl",
+      "option_b": "i) CO2, NaOH, 120-140°C ii) dil. HCl",
+      "option_c": "i) CCl4, NaOH, 60-80°C ii) dil. HCl",
+      "option_d": "i) HCHO, NaOH ii) dil. HCl",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "নীচের কোন্ যৌগটি ক্ষারীয় মাধ্যমে I2-র সঙ্গে বিক্রিয়ায় হলুদ বর্ণের অধঃক্ষেপ উৎপন্ন করে? [cite: 328]",
+      "option_a": "মিথানল",
+      "option_b": "প্রোপানল",
+      "option_c": "প্রোপান-2-অল",
+      "option_d": "2-মিথাইল-প্রোপান-2-অল",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নীচের কোন্ বিকারক ব্যবহার করে গ্লুকোজ ও ফ্রুক্টোজ-এর মধ্যে পার্থক্য করা যাবে? [cite: 335]",
+      "option_a": "টলেন'স বিকারক",
+      "option_b": "ফেলিং'স বিকারক",
+      "option_c": "Br2/H2O",
+      "option_d": "C6H5-NH2",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "সুক্রোজের আর্দ্রবিশ্লেষণে গ্লুকোজ ও ফ্রুক্টোজ উৎপন্ন হয় এবং আপেক্ষিক আলোকীয় আবর্তন (specific optical rotation)-এর পরিবর্তন ঘটে। এই ঘটনাটি হলো [cite: 332]",
+      "option_a": "মিউটারোটেশান",
+      "option_b": "ইনভারশান",
+      "option_c": "পাইরোলিসিস",
+      "option_d": "রেসিমাইজেশান",
+      "correct_option": "B"
+    },
+    {
+      "question_text": "অলিফিনের যুত পলিমারাইজেশান-এ ব্যবহৃত অনুঘটকটি হলো [cite: 340]",
+      "option_a": "জিগলার-ন্যাটা অনুঘটক",
+      "option_b": "জিওলাইট",
+      "option_c": "উইলকিনসন অনুঘটক",
+      "option_d": "Pd-BaSO4",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "নীচের কোন্ পলিমার মনোমার অ্যাক্রাইলো-নাইট্রাইল (Acrylonitrile) দ্বারা গঠিত? [cite: 339]",
+      "option_a": "অরলন",
+      "option_b": "ডেক্রন",
+      "option_c": "টেফলন",
+      "option_d": "নাইলন",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "নীচের স্তম্ভ-I ও স্তম্ভ-II-এর মধ্যে সামঞ্জস্য বিধান করো ও সঠিক বিকল্প চয়ন করো: স্তম্ভ-I ((i) P-F রেজিন (ii) নিওপ্রিন (iii) প্রাকৃতিক রবার (iv) নাইলন-6) স্তম্ভ-II ((a) ক্লোরোপ্রিন (b) আইসোপ্রিন (c) ক্যাপ্রোল্যাকটাম (d) নোভোল্যাক) [cite: 343]",
+      "option_a": "(i)-(d), (ii)-(a), (iii)-(b), (iv)-(c)",
+      "option_b": "(i)-(a), (ii)-(b), (iii)-(c), (iv)-(d)",
+      "option_c": "(i)-(b), (ii)-(c), (iii)-(d), (iv)-(a)",
+      "option_d": "(i)-(c), (ii)-(d), (iii)-(a), (iv)-(b)",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "কুয়াশা কি ধরনের কোলয়েড? [cite: 349]",
+      "option_a": "গ্যাসের মধ্যে কঠিন",
+      "option_b": "গ্যাসের মধ্যে গ্যাস",
+      "option_c": "গ্যাসের মধ্যে তরল",
+      "option_d": "তরলের মধ্যে গ্যাস",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নির্দিষ্ট উষ্ণতায় একটি সুক্রোজের জলীয় দ্রবণের সঙ্গে 0.1 (M) KNO3 এর জলীয় দ্রবণ আইসোটোনিক। সুক্রোজের দ্রবণের গাঢ়ত্ব কত? [cite: 346]",
+      "option_a": "0.1 (M)",
+      "option_b": "0.3 (M)",
+      "option_c": "0.2 (M)",
+      "option_d": "0.4 (M)",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "সদ্য প্রস্তুত অধঃক্ষেপে উপযুক্ত তড়িৎবিশ্লেষ্য পদার্থ যোগ করে কোলয়েড দ্রবণ প্রস্তুত করার প্রক্রিয়াকে বলা হয় [cite: 354]",
+      "option_a": "ডায়ালিসিস",
+      "option_b": "পেপটাইজেশান",
+      "option_c": "তঞ্চন",
+      "option_d": "ইলেক্ট্রোফোরেসিস",
+      "correct_option": "B"
+    },
+    {
+      "question_text": "নিচের কোন্ যৌগটিতে পার-অক্সো বন্ধন অনুপস্থিত [cite: 351]",
+      "option_a": "H2O2",
+      "option_b": "H2SO5",
+      "option_c": "H2S2O8",
+      "option_d": "H2S2O7",
+      "correct_option": "D"
+    },
+    {
+      "question_text": "নিচের কোন্ যৌগ-যুগ্ম জারণ ও বিজারণ উভয় ধর্মই প্রদর্শন করে ? [cite: 356]",
+      "option_a": "NO, SO3",
+      "option_b": "NO2, H2O2",
+      "option_c": "CO2, SO2",
+      "option_d": "N2O5, O3",
+      "correct_option": "B"
+    },
+    {
+      "question_text": "একটি অনিয়তাকার কঠিন পদার্থ (X)-কে বাতাসে পোড়ালে একটি গ্যাস (Y) উৎপন্ন হয় যা স্বচ্ছ চুনজলকে ঘোলা করে (Y) গ্যাসটি আম্লিক KMnO4-এর জলীয় দ্রবণকে বর্ণহীন করে। গ্যাস (Y) অক্সিজেনের সঙ্গে বিক্রিয়া করে গ্যাস (Z) উৎপন্ন করে যা অম্লবৃষ্টির জন্য দায়ী। X, Y, Z হলো [cite: 360]",
+      "option_a": "X - S; Y - SO2; Z - SO3",
+      "option_b": "X - C; Y - CO; Z - CO2",
+      "option_c": "X - P; Y - PH3; Z - P2H4",
+      "option_d": "X - S; Y - SO3; Z - H2SO4",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "Fe-র উপস্থিতিতে Cl2 এর সঙ্গে টলুইনের বিক্রিয়ায় উৎপন্ন মুখ্য বিক্রিয়াজাত জৈব যৌগটি হলো [cite: 365]",
+      "option_a": "Benzyl chloride",
+      "option_b": "Benzal chloride",
+      "option_c": "p-Chlorotoluene",
+      "option_d": "m-Chlorotoluene",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "নিচের কোন্ যৌগটি জলীয় KOH-এর উপস্থিতিতে SN1 বিক্রিয়া দ্বারা রেসিমিক মিশ্রণ উৎপন্ন করতে পারবে? (I) CH3-CH(Br)-C2H5 (II) CH3-C(Br)(CH3)-C2H5 (III) CH3-CH2-CH(CH3)-CH2Br (IV) CH3-CH2-CH2-CH2Br [cite: 369]",
+      "option_a": "I",
+      "option_b": "II",
+      "option_c": "III",
+      "option_d": "IV",
+      "correct_option": "A"
+    },
+    {
+      "question_text": "নিচের কোন্ বিক্রিয়াটি সঠিক ভাবে মেলে না? [cite: 375]",
+      "option_a": "2CH3Br + 2Na -> C2H6 + 2NaBr; উর্জ বিক্রিয়া",
+      "option_b": "2C6H5Br + 2Na -> C6H5-C6H5 + 2NaBr; ফিটিগ বিক্রিয়া",
+      "option_c": "CH3Br + AgF -> CH3F + AgBr; সটেন-ব্যোমান বিক্রিয়া",
+      "option_d": "CH3COOAg + Br2 -> CH3Br + CO2 + AgBr; হানসডিকার বিক্রিয়া",
+      "correct_option": "C"
+    },
+    {
+      "question_text": "গ্যাটারম্যান বিক্রিয়ায় নীচের কোন বিকারকটি ব্যবহৃত হয়? [cite: 381]",
+      "option_a": "CuCl/HCl",
+      "option_b": "Cl2/Fe",
+      "option_c": "HCl/Cu",
+      "option_d": "KCl/HCl",
+      "correct_option": "C"
+    }
   ]
 }

@@ -77,20 +77,20 @@ def send_otp_email(receiver_email, otp_code):
     msg["From"] = f"{from_name} <{from_email}>"
     msg["Subject"] = "ExamMate OTP Verification"
     msg["To"] = receiver_email
-    msg["Reply-To"] = sender_email
+    msg["Reply-To"] = from_email
     msg["Message-ID"] = make_msgid()
 
     try:
-    with smtplib.SMTP(smtp_server, smtp_port) as server:
-        server.starttls()
-        server.login(smtp_username, smtp_password)
-        server.sendmail(from_email, receiver_email, msg.as_string())
-        return True
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_username, smtp_password)
+            server.sendmail(from_email, receiver_email, msg.as_string())
+            return True
 
     except Exception as e:
         st.error(f"SMTP Error: {e}")
         return False
-    if not sender_email or not sender_password:
+    if not from_email or not smtp_password:
         st.info(f"SMTP credentials are not configured. For testing, use OTP: {otp_code}")
         return True
 
@@ -274,3 +274,14 @@ else:
         st.session_state.otp = None
         st.session_state.temp_user = {}
         st.rerun()
+
+    st.warning(f"""***Didn't receive the OTP?***
+
+        If you can't find this OTP email in your Inbox, please check your Spam or Junk folder.
+
+        **How to find it (Gmail):
+
+        1. Open the Gmail app or website.
+        2. Tap the ☰ (Menu) in the top-left corner.
+        3. Scroll down and open Spam.
+        4. If you find this email, open it and tap "Report not spam" (or "Not spam") so future OTP emails will arrive in your Inbox.""")
